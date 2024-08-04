@@ -6,7 +6,7 @@ import prisma from "@/prisma/client";
 export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
     const userId = await prisma.user.findUnique({
         where: {
-            id: parseInt(params.id)
+            id: params.id
         }
     })
     if (!userId) {
@@ -32,7 +32,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
 
     const user = await prisma.user.findUnique({
         where: {
-            id: parseInt(params.id)
+            id: params.id
         }
     })
 
@@ -46,7 +46,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
 
     const newUser = await prisma.user.update({
         where: {
-            id: parseInt(params.id)
+            id: params.id
         },
         data: {
             name: body.name,
@@ -63,7 +63,7 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
 
     const user = await prisma.user.findUnique({
         where: {
-            id: parseInt(params.id)
+            id: params.id
         }
     })
 
@@ -77,7 +77,7 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
 
     await prisma.user.delete({
         where: {
-            id: parseInt(params.id)
+            id: params.id
         }
     })
 
